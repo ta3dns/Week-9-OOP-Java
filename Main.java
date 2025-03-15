@@ -11,33 +11,48 @@ public class Main {
 
     public static void main(String[] args){
 
-        RallyCar gravel1 = new GravelCar("test", "Test", 500);
-        RallyCar asphalt1 = new AsphaltCar("T.A. Make", "T.A Model", 200);
+        ChampionshipManager cm = ChampionshipManager.getInstance();
 
-        System.out.println("Gravel Car");
-        System.out.println(gravel1.getMake());
-        System.out.println(gravel1.getModel());
-        System.out.println(gravel1.calculatePerformance());
+    RallyCar asphalt1 = new AsphaltCar("Make 1", "Asphalt Model 1", 350);
+    RallyCar asphalt2 = new AsphaltCar("Make 2", "Asphalt Model 2", 750);
+    RallyCar gravel1 = new GravelCar("Make 1", "Gravel Model 1", 400);
+    RallyCar gravel2 = new GravelCar("Make 2", "Gravel Model 2", 800);
+    
 
-        System.out.println("Asphalt Car");
-        System.out.println(asphalt1.getMake());
-        System.out.println(asphalt1.getModel());
-        System.out.println(asphalt1.calculatePerformance());
+    Driver driver1 = new Driver("John Doe", "USA", asphalt1);
+    Driver driver2 = new Driver("Jane Smith", "UK", asphalt2);
+    Driver driver3 = new Driver("Carlos Ruiz", "Spain", gravel1);
+    Driver driver4 = new Driver("Emma Jhonson", "Austuralia", gravel2);
+    
+    cm.registerDriver(driver1);
+    cm.registerDriver(driver2);
+    cm.registerDriver(driver3);
+    cm.registerDriver(driver4);
 
-        Driver driver1 = new Driver("John Doe", "UK", gravel1);
-        Driver driver2 = new Driver("Jane Doe", "USA", asphalt1);
-        
-        System.out.println("Driver 1");
-        System.out.println(driver1);
-        System.out.println(driver1.getCar().calculatePerformance());
-        
-        System.out.println("Driver 2");
-        System.out.println(driver2);
-        System.out.println(driver2.getCar().calculatePerformance());
-        
+    RallyRaceResult race1 = new RallyRaceResult("Finland Rally", "Lappeenranta");
+    race1.recordResult(driver1, 1, 10);
+    race1.recordResult(driver2, 1, 8);
+    race1.recordResult(driver3, 3, 6);
+    race1.recordResult(driver4, 4, 4);
+
+    cm.addRaceResult(race1);
+
+    RallyRaceResult race2 = new RallyRaceResult("UK Rally", "London");
+    race1.recordResult(driver1, 2, 8);
+    race1.recordResult(driver2, 1, 10);
+    race1.recordResult(driver3, 3, 6);
+    race1.recordResult(driver4, 4, 4);
+
+    cm.addRaceResult(race2);
 
 
-    }
+    System.out.println("Statistics:");
+    System.out.println("Total Drivers: " + cm.getTotalDrivers());
+    System.out.println("Total Races Hels: " +ChampionshipManager.getTotalRaces());
+    System.out.println("Average Races Per Driver: " + ChampionshipStatistics.calculateAveragePointsPerDriver(cm.getDriverStandings()));
+    System.out.println("Most Successful Country: " + ChampionshipStatistics.findMostSuccessfulCountry(cm.getDriverStandings()));
+    System.out.println("Total Championship Points: " + ChampionshipManager.getTotalChampionshipPoints());
+}
 
     
 }
