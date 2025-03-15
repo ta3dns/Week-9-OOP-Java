@@ -14,13 +14,12 @@ public class Driver {
     private int points;
     private RallyCar car;
 
+    // Constructor
     public Driver(String name, String country, RallyCar car){
         this.name = name;
         this.country = country;
         this.car = car;
     }
-
-
 
     // Getters
     public String getName(){
@@ -52,6 +51,15 @@ public class Driver {
     // toString override for displaying driver info
     @Override
     public String toString(){
-        return "Driver Name: " + name + " Country: " + country + " Car: " + car + " Total Point: " + points;
-    } // when printing car there seems to be a small issue. 
+        return driverFormatter.format(this);
+    }  
+}
+
+class driverFormatter {
+    public static String format(Driver driver){
+        return "Driver Name: " + driver.getName() +
+        ", Country: " + driver.getCountry() + 
+        ", Car: " + driver.getCar() + 
+        ", Points: " + driver.getPoints();
+    }
 }
