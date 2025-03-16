@@ -57,9 +57,8 @@ public class Driver {
 
 class driverFormatter {
     public static String format(Driver driver){
-        return "Driver Name: " + driver.getName() +
-        ", Country: " + driver.getCountry() + 
-        ", Car: " + driver.getCar() + 
-        ", Points: " + driver.getPoints();
+        return driver.getName() +
+        " (" + driver.getCountry() + 
+        "): " + driver.getPoints() + " points";
     }
 }

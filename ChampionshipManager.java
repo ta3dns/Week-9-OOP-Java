@@ -77,6 +77,10 @@ public class ChampionshipManager {
         return totalDrivers;
     }
 
+    public List<RallyRaceResult> getRace(){
+        return races;
+    } 
+
 
     
 }

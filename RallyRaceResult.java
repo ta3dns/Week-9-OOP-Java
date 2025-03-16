@@ -25,9 +25,9 @@ public class RallyRaceResult implements RaceResult {
 
     @Override
     public void recordResult(Driver driver, int position, int points){
-        results.put(driver, points);
+        results.put(driver, points);    
+        driver.addPoints(points);
     }
-
     
     @Override
     public int getDriverPoints(Driver driver){
