@@ -6,12 +6,7 @@
  * * MAIN **
  * 
  *********************************************/
-import java.util.Map;
-import java.util.HashMap;
-
 public class Main {
-
-    private static Map<Driver, Integer> raceMap;
 
 
     public static void main(String[] args){
