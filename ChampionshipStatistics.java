@@ -1,10 +1,19 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
+/*********************************************
+ * Deniz Özmalkoc 
+ * OOP-Week 9 Assignment
+ * 16.03.2025 Lappeenranta
+ * 
+ * * Championship Statistics **
+ * 
+ *********************************************/
+
+
 import java.util.List;
 
 
 public class ChampionshipStatistics{
+
+    // Calculating average points for the drivers in the race. 
     public static double calculateAveragePointsPerDriver(List<Driver> drivers){
         if (drivers.isEmpty()) return 0;
         int totalPoints = 0;
@@ -16,20 +25,41 @@ public class ChampionshipStatistics{
         return(double) totalPoints/drivers.size();
     }
 
-    public static String findMostSuccessfulCountry(List<Driver> drivers){
-        if (drivers.isEmpty()) return "No Drivers Available";
 
-        Map<String, Integer> countryPoints = new HashMap<>();
+    // Finding the most successfull country.
+    public static String findMostSuccessfulCountry(List<Driver> drivers){
+        
+        // Iterates through every driver in the race, adds the countries' points 
+        // together and if it encounters a country with larger points updates the 
+        // mostSuccessfullCountry
+
+        if (drivers.isEmpty()) return "No Drivers Available.";
+
+        String mostSuccessfullCountry = null;
+        int maxPoints = Integer.MIN_VALUE;
 
         for (Driver driver : drivers){
-            countryPoints.put(driver.getCountry(), countryPoints.getOrDefault(driver.getCountry(), 0) + driver.getPoints());
+            String country = driver.getCountry();
 
+            int totalPoints = driver.getPoints();
+            for (Driver thatDriver : drivers){
+                if (driver != thatDriver && country.equals(thatDriver.getCountry())){
+                    totalPoints += thatDriver.getPoints();
+                }
+            }
+
+            if (totalPoints > maxPoints){
+                maxPoints = totalPoints;
+                mostSuccessfullCountry = country;
+            }
         }
 
-        return countryPoints.entrySet().stream().max(Entry.comparingByValue()).map(Map.Entry::getKey).orElse("No Data Available");
-        
+        return mostSuccessfullCountry;
     }
 
+
+
+    // Getters.
     public static int getTotalRacesHeld(){
         return ChampionshipManager.getTotalRaces();
     }

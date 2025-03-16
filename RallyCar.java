@@ -12,6 +12,7 @@ abstract class RallyCar {
     protected String model;
     protected int horsepower;
 
+    // Constructor
     public RallyCar(String make, String model, int horsepower){
         this.make = make;
         this.model = model;
@@ -32,8 +33,14 @@ abstract class RallyCar {
     public int getHorsepower(){
         return horsepower;
     }
+
+    @Override
+    public String toString(){
+        return carFormatter.format(this);
+    }
 }
 
+// Gravel Car class with its own performance algorithm.
 class GravelCar extends RallyCar{
     public GravelCar(String make, String model, int horsepower){
         super(make, model, horsepower);
@@ -45,7 +52,7 @@ class GravelCar extends RallyCar{
         }
 }
 
-
+// Asphalt car class with its own performance algoritm
 class AsphaltCar extends RallyCar{
     public AsphaltCar(String make, String model, int horsepower){
         super(make, model, horsepower);
@@ -56,5 +63,14 @@ class AsphaltCar extends RallyCar{
         return horsepower * 1.1; // Algorithm to be implemented. 
     }
 
+}
+
+// new class to comply with SOLID, formats the driver to be used in toString later.
+class carFormatter {
+    public static String format(RallyCar car){
+        return car.getMake() +
+        " " + car.getModel() + 
+        " (" + car.getHorsepower() + ")";
+    }
 }
 

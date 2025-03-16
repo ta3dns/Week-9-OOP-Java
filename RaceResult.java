@@ -1,3 +1,12 @@
+/*********************************************
+ * Deniz Özmalkoc 
+ * OOP-Week 9 Assignment
+ * 16.03.2025 Lappeenranta
+ * 
+ * * RACE RESULT **
+ * 
+ *********************************************/
+
 import java.util.List;
 public interface RaceResult {
 

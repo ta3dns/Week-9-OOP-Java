@@ -55,10 +55,11 @@ public class Driver {
     }  
 }
 
+// new class to comply with SOLID, formats the driver to be used in toString later.
 class driverFormatter {
     public static String format(Driver driver){
         return driver.getName() +
         " (" + driver.getCountry() + 
-        "): " + driver.getPoints() + " points";
+        ") With " + driver.getCar() + ": " + driver.getPoints() + " points";
     }
 }

@@ -1,7 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
 /*********************************************
  * Deniz Özmalkoc 
@@ -11,6 +7,10 @@ import java.util.Map.Entry;
  * * Championship Manager **
  * 
  *********************************************/
+
+import java.util.ArrayList;
+import java.util.List;
+
  
 public class ChampionshipManager {
 
@@ -22,7 +22,7 @@ public class ChampionshipManager {
     private static int totalRaces;
 
 
-
+    // Constructor
     private ChampionshipManager(){
         drivers = new ArrayList<>();
         races = new ArrayList<>();
@@ -30,21 +30,25 @@ public class ChampionshipManager {
         totalRaces = 0;
     }
 
-    public static ChampionshipManager getInstance(){
-        if (instance == null){
-            instance = new ChampionshipManager();
-        }
-        return instance;
-    }
-
+    // Registering the driver for the race. 
     public void registerDriver(Driver driver){
         drivers.add(driver);
         totalDrivers++;
     }
 
+
     public void addRaceResult(RallyRaceResult result){
         races.add(result);
         totalRaces++;
+    }
+
+    // Implementing Getters
+
+    public static ChampionshipManager getInstance(){
+        if (instance == null){
+            instance = new ChampionshipManager();
+        }
+        return instance;
     }
 
     public List<Driver> getDriverStandings(){
